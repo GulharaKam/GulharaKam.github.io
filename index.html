@@ -35,7 +35,7 @@
     </div>
    <div class="block2">
    <form>
-    <h6>Поиск по странице</h6>
+    <label>Поиск по странице</label>
     <input type="text" id="text-to-find" value=""> 
     <input type="button" onclick="javascript: FindOnPage('text-to-find'); return false;" value="Искать"/>
     </form>
@@ -71,7 +71,6 @@ function FindOnPage(inputId) {
         document.body.innerHTML=copy_page;
   else copy_page=document.body.innerHTML;
  
-   
   document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");
   document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:yellow'>"+textToFind+"</a>");
   lastResFind=textToFind;
