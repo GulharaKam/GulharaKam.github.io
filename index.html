@@ -35,37 +35,12 @@
     </div>
    <div class="block2">
    <form>
-    <input type="text" id="search">
-    <input type="hidden" id="hid_search">
-    <input type="button" id="button" onmousedown="doSearch(document.getElementById('search').value)" value="Найти">
+    <input type="text" id="search" value="Найтм">
     </form>
    </div> 
     <p><a href="second.html">Причина загрязнения</a></p>
-
 <script>
- function Searchword(text,color="yellow") {
-    if (color!="transparent") {
-      doSearch(document.getElementById('hid_search').value,"transparent"); 
-      document.getElementById('hid_search').value = text; 
-      }
-    if (window.find && window.getSelection) {
-        document.designMode = "on";
-        var sel = window.getSelection();
-        sel.collapse(document.body, 0);
-        
-        while (window.find(text)) {
-            document.execCommand("HiliteColor", false, color);
-            sel.collapseToEnd();
-        }
-        document.designMode = "off";
-    } else if (document.body.createTextRange) {
-        var textRange = document.body.createTextRange();
-        while (textRange.findText(text)) {
-            textRange.execCommand("BackColor", false, color);
-            textRange.collapse(false);
-        }
-    }
-} 
+
 </script>  
 </body>
 </html>
