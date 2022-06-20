@@ -26,16 +26,17 @@
   <div class="block2">
   <form>   
   <p>Комментарий<Br>
-     <textarea name="comment" cols="70" rows="5"></textarea></p>
+     <textarea id="message" name="message" cols="70" rows="5"></textarea></p>
      <p><input type="submit" value="Отправить">
-     <input type="reset" id="ClearButton" onkeyup="ClearFunction()" value="Очистить"></p>
+     <button id="btn">Clear value</button></p>
   </form>
  </div>
   <p><a href="index.html">Экология сегодня</a></p>
 </body>
   <script>
     function ClearFunction() {
-    
-}
+    const textarea = document.getElementById('message');
+    textarea.value = '';
+    }
   </script> 
 </html>
