@@ -72,8 +72,8 @@ function FindOnPage(inputId) {
   else copy_page=document.body.innerHTML;
  
    
-  document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");//стираем предыдущие якори для скрола
-  document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:yellow'>"+textToFind+"</a>"); //Заменяем найденный текст ссылками с якорем;
+  document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");
+  document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:yellow'>"+textToFind+"</a>");
   lastResFind=textToFind;
   window.location = '#'+textToFind;
  } 
