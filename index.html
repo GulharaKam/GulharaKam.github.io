@@ -49,12 +49,12 @@ function TrimStr(s) {
      s = s.replace( /^\s+/g, '');
   return s.replace( /\s+$/g, '');
 }
-function FindOnPage(inputId) {//ищет текст на странице, в параметр передается ID поля для ввода
+function FindOnPage(inputId) {
   var obj = window.document.getElementById(inputId);
   var textToFind;
   
   if (obj) {
-    textToFind = TrimStr(obj.value);//обрезаем пробелы
+    textToFind = TrimStr(obj.value);
   } else {
     alert("Введенная фраза не найдена");
     return;
@@ -74,8 +74,8 @@ function FindOnPage(inputId) {//ищет текст на странице, в п
    
   document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");//стираем предыдущие якори для скрола
   document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:red'>"+textToFind+"</a>"); //Заменяем найденный текст ссылками с якорем;
-  lastResFind=textToFind; // сохраняем фразу для поиска, чтобы в дальнейшем по ней стереть все ссылки
-  window.location = '#'+textToFind;//перемещаем скрол к последнему найденному совпадению
+  lastResFind=textToFind;
+  window.location = '#'+textToFind;
  } 
 </script>  
 </body>
