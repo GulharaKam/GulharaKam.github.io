@@ -1,0 +1,7 @@
+<?php
+$details=array();
+$details['server_host']="srv-pleskdb37.ps.kz:3306";//server host name
+$details['mysql_name']="gynec_gynecology";//your mysql user name
+$details['mysql_password']="cnA74k3@";//your mysql user name
+$details['mysql_database']="gynecol2_gynecologykz";//your database name
+?>
