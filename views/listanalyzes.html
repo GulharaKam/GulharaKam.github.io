@@ -1,0 +1,23 @@
+<div class="card bg-light distance col-md-12">
+        <div class="card-body">
+            На этой странице вы можете скачать список обследований, которые необходимо пройти перед операцией, в зависимости от вашего диагноза. Вы можете пройти обследование по месту жительства. В списке указаны срок действия анализов. Также представлены виды анализов,
+            которые должны быть оригинальными, с печатями. Вы можете приносить с собой данные предыдущих обследований (если они проводились): результаты УЗИ, МРТ, КТ, гистероскопии и РДВ и др.
+        </div>
+    </div>
+<div class="col-md-8 distance">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center" scope="col">№</th>
+                <th scope="col">Список обследований по диагнозу</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="list in typesworks">
+                <td class="text-center" scope="col">{{list.id}}</a>
+                </td>
+                <td><a ng-href="{{list.patch}}" download={{list.name}} class="text-dark"><i class="fa fa-download"></i>{{list.name}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
