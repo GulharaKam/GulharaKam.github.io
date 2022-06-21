@@ -2,21 +2,9 @@ var app = angular.module("myApp", ["ngRoute",  "toastr", "ui.uploader"])
     .run(function($rootScope, $http, $location) {
         $rootScope.sessionData = {};
         $rootScope.profile = function() {
-            $http.get("http://localhost:777/profile/user", {withCredentials: true}).then(function(data) {
-                $rootScope.sessionData = data.data;
-                $rootScope.loggedIn = true;
-            }, function() {
-                $rootScope.loggedIn = false;
-                $location.path("login");
-            })
         }
 
         $rootScope.logout = function() {
-            $http.get("http://localhost:777/user/logout", {withCredentials: true}).then(function(data) {
-                $rootScope.sessionData = null;
-                $rootScope.loggedIn = false;
-                $location.path("login");
-            });
         }
     });
 
