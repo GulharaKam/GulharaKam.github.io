@@ -1,0 +1,47 @@
+<div class="col-md-12 headline distance">
+    <h5>Информация для пациентов</h5>
+</div>
+<div class="list-group" ng-repeat="info in forpatients">
+    <a ng-click="scroll()" ng-href="{{info.patch}}" class="list-group-item list-group-item-action">{{info.name}}</a>
+</div>
+
+<div class="col-md-12 headline distance">
+    <h5>Ваш отзыв:</h5>
+</div>
+<div class="col-md-12 bg-light border">
+    <div class="form-group col-md-6 mt-3">
+        <input ng-model="patient.name" type="text" class="form-control" placeholder="Ваше имя">
+    </div>
+    <div class="form-group col-md-6">
+        <select ng-model="patient.area_id" class="form-control">
+            <option value="" disabled selected>Выберите ваш город</option>
+            <option ng-repeat="area in areacity" value="{{area.id}}">{{area.name}}</option>
+            </select>
+    </div>
+    <div class="form-group col-md-12">
+        <textarea ng-model="patient.text" class="form-control" rows="6" placeholder="Место для отзыва"></textarea>
+    </div>
+    <div class="row">
+            <div class="form-group col-md-12" vc-recaptcha
+            key="'6LcUhKQUAAAAAFVenCvA-75OXCZFauEEJAtsozT_'"></div>
+	</div>
+	<div class="row">
+        <div class="form-group col-md-12">
+            <button ng-show="!submited" ng-click="submit()" class="btn btn-primary float-left">Оставить отзыв</button>
+            <button ng-show="submited" class="btn btn-primary float-left" disabled>Отправляется&nbsp;&nbsp;
+            <i class="fa fa-hourglass-half hourglass-animate"></i>
+        </div>
+    </div>
+</div>
+
+<div class="card bg-light distance">
+    <div class="card-body">
+       <p>Я искренне хочу поблагодарить каждого, оставившего свой отзыв на этом сайте!</p>
+       <p>Ваши отзывы позволяют другим пациентам, имеющим проблемы со стороны женской половой сферы, легче сориентироваться в имеющихся у них заболеваниях, сэкономить их время и сохранить здоровье!</p>
+       <p>Отдельное спасибо всем пациентам, прошедшим у меня лечение, которые оставляют отзыв на сайте. В их лице уже Вы сможете обрести реальных свидетелей успешного исхода оперативных вмешательств и узнать как поменялась их жизнь после операции, напрямую – из первых уст. Читая отзывы реальных пациентов, Вы можете увидеть реальные человеческие судьбы.</p>
+       <p>Каждому пациенту мне хотелось сказать отдельное спасибо лично за теплые слова, содержащиеся в отзывах, которые очень важны в нашей работе! Спасибо за то, что Вы нашли время написать отзыв.</p>
+       <p>Всегда рад Вам помочь!</p>
+        Отправляйте Ваш отзыв, пожелания, рекомендации, фотографии, видеоотзыв на электронную почту <a href="mailto:info@gynecologykz.com?subject=Sent from gynecologykz.com" class="headline"><i class="fa fa-envelope"></i>info@gynecologykz.com</a>
+    </div>
+</div>
+
