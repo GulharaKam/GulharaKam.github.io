@@ -33,7 +33,6 @@ app.config(function ($routeProvider) {
         .otherwise({
             redirectTo: 'main',
         });
-
 });
 
 app.filter('type', function () {
