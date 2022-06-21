@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-md-12 headline distance text-center">
+        <h5>Отзывы пациентов врача Сейсембекова Даира Тельмановича</h5>
+    </div>
+    <div class="card bg-light distance" ng-repeat="review in patientreview | startFrom:currentPage*pageSize | limitTo:pageSize">
+        <div class="card-body">
+            <div ng-if="!review.fotoname && !review.videoname">
+                <h5 class="alert-heading inscription">{{review.name}}</h5>
+                <p class="time"><var>{{review.inputdatetime}}</var></p>
+                <p class="my-2">{{review.text}}</p>
+                <p class="mt-2">{{review.area}}</p>
+            </div>
+            <div ng-if="review.fotoname && !review.videoname" class="row">
+                <div class="col-md-6">
+                    <h5 class="alert-heading inscription">{{review.name}}</h5>
+                    <p class="time"><var>{{review.inputdatetime}}</var></p>
+                    <p class="my-2">{{review.text}}</p>
+                    <p class="mt-2">{{review.area}}</p>
+                </div>    
+                <div class="col-md-6 text-center">   
+                    <img ng-if="review.fotoname" ng-src={{review.fotoname}} class="img-fluid my-2" alt="">
+                </div>
+            </div>
+            <div ng-if="!review.fotoname && review.videoname" class="row d-flex justify-content-center">
+                <div class="col-md-12">
+                    <h5 class="alert-heading inscription">{{review.name}}</h5>
+                    <p class="time"><var>{{review.inputdatetime}}</var></p>                
+                    <p class="my-2">{{review.text}}</p>
+                    <p class="mt-2">{{review.area}}</p>  
+                </div>
+                <div class="col-md-9">
+                    <div class="embed-responsive embed-responsive-16by9 hoverable my-2">
+                        <iframe class="embed-responsive-item" ng-src={{review.videoname}} frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-center distance">
+        <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Предыдущее</button> {{currentPage+1}}/{{numberOfPages()}}
+        <button ng-disabled="currentPage >= patientreview.length/pageSize - 1" ng-click="currentPage=currentPage+1">Следующее</button>
+    </div>
+</div>
