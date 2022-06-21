@@ -1,75 +1,115 @@
+<!DOCTYPE html>
 <html lang="ru" ng-app="myApp">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/angular-toastr.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-route.js"></script>
-    <script type="text/javascript" src="js/uploader.min.js"></script>
-    <script src="js/app.js"></script>
-    <script type="text/javascript" src="js/angular-toastr.tpls.min.js"></script>
-    
+         <meta content="гинеколог, гинеколог хирург, миома, киста яичника, бесплодие, эндометриоз, Даир Тельманович, опущение матки, операции гинекология, Сейсембеков, лучшие гинекологи, гинеколог астана, гинеколог нур-султан" name="keywords">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+	     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link href="css/bootstrap.min.css" rel="stylesheet">
+         <link href="css/font-awesome.min.css" rel="stylesheet">
+         <link href="css/style.css" rel="stylesheet">
+         <link href="css/angular-toastr.css" rel="stylesheet" type="text/css">
+         <script src="js/jquery.min.js"></script>
+         <script src="js/popper.min.js"></script>
+         <script src="js/bootstrap.min.js"></script>
+         <script src="js/angular.min.js"></script>
+         <script src="js/angular-route.js"></script>
+         <script src="js/app.js"></script>
+         <script type="text/javascript" src="js/angular-toastr.tpls.min.js"></script>
+	      <script type="text/javascript" src="js/angular-recaptcha.min.js"></script>
+         <script src='https://www.google.com/recaptcha/api.js'></script>
+         
+   
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <a class="navbar-brand" href="#!/main">
-         <img src="img/ecology.png" width="70" height="40" alt="">
-       </a>
-       <ul class="navbar-nav ml-auto">
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-           <span class="fa fa-user-circle" style="font-size: 40px; line-height: 40px;"></span>
-           </a>
-         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="">Профиль</a>
-           <a class="dropdown-item" ng-click="">Выйти</a>
-         </div>
-         </li>
+    <ul class="nav justify-content-end bg-light lighten-2 py-2">
+        <li class="nav-item">
+            <a class="ml-4 phone" href="https://wa.me/77017362706" target="_blank"><i class="fa fa-whatsapp type-whatsapp"></i></a>
+            <a class="text-dark mr-4 phone" href="tel:+77017362706"><i class="fa fa-phone-square"></i><strong> +7 701 736 27 06</strong></a>
+        </li>
+        <li class="nav-item">
+            <a class="text-dark mx-4 phone" href="tel:+77057533601"> <i class="fa fa-phone-square"></i><strong>+7 705 753 36 01</strong></a>
+        </li>
+        <a href="#!/consultationemail"  class="btn btn-success mx-4" role="button" aria-pressed="true" data-toggle="collapse" data-target=".navbar-collapse.show">Консультация по e-mail</a>
     </ul>
-  </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Главная<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="#!/requestclient">Задачи</a>
-        <a class="nav-item nav-link active" href="#!/activityreport">Новости</a>
-      </div>
-    </div>
-  </nav>
-<div class="card">
-  <div class="card-header">
-          <form>
-          <div class="form-group">
-          <input type="email" class="form-control col-md-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите">
-           </div>
-          <button type="submit" class="btn btn-primary">Поиск</button>
-         </form>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Введение</h5>
-    <p class="card-text">Cегодня термин "экология" стал применяться очень широко, по самым различным поводам (по делу и не по делу). И процесс этот, по-видимому, необратим. Однако чрезмерное расширение понятия "экология" и включение его в жаргон все же недопустимо. Так, например, говорят, что в городе "плохая экология". Выражение бессмысленное, ибо экология - научная дисциплина и она одна для всего человечества. Можно говорить о плохой экологической обстановке, о неблагоприятных экологических условиях, о том, что в городе отсутствуют квалифицированные экологи, но не о плохой экологии. Это так же нелепо, как сказать, что в городе плохая арифметика или алгебра.
-     </p>
-  </div>
-   <div class="card-body">
-    <h5 class="card-title">Промышленная экология</h5>
-    <p class="card-text">Итак, человеческая активность меняет характер окружающей среды, причем в большинстве (не всегда, но в большинстве) случаев, эти изменения оказывают негативное влияние на человека. И нетрудно понять, почему: за миллионы лет его организм приспособился к вполне определенным условиям обитания. Но в то же время любая деятельность - промышленная, сельскохозяйственная, рекреационная - источник жизни человека, основа его существования. Значит, человек неизбежно и дальше будет менять характеристики окружающей среды. А потом - искать способы приспосабливаться к ним.
-     </p>
-  </div>
-    <div class="card-body">
-    <h5 class="card-title">Биосфера и человек</h5>
-    <p class="card-text">Биосфера - это часть верхней оболочки Земли, в которой существует или способно существовать живое вещество. К биосфере принято относить атмосферу, гидросферу (моря, океаны, реки и другие водоемы) и верхнюю часть земной тверди. Биосфера не находится и никогда не находилась в состоянии равновесия. Она получает энергию Солнца и, в свою очередь, излучает определенное количество энергии в космос. Эти энергии разного свойства (качества). Получает Земля коротковолновое излучение - свет, который, трансформируясь, нагревает Землю. А в космос от Земли уходит длинноволновое тепловое излучение. И баланс этих энергий не соблюдается: Земля излучает в космос несколько меньше энергии, чем получает от Солнца. Эту разность - небольшие доли процента - и усваивает Земля, точнее, ее биосфера, которая все время накапливает энергию. Этого небольшого количества накапливаемой энергии оказывается достаточно для того, чтобы поддерживать все грандиозные процессы развития планеты. Этой энергии оказалось достаточно для того, чтобы однажды на поверхности нашей планеты вспыхнула жизнь и возникла биосфера, чтобы в процессе развития биосферы появился человек и возник Разум.
-     </p>
-  </div>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon custom-toggler"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!/main" data-toggle="collapse" data-target=".navbar-collapse.show">Главная <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/aboutdoctor" data-toggle="collapse" data-target=".navbar-collapse.show">О докторе</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/reviews" data-toggle="collapse" data-target=".navbar-collapse.show">Отзывы пациентов</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/clinic" data-toggle="collapse" data-target=".navbar-collapse.show">О клинике</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/forpatient" data-toggle="collapse" data-target=".navbar-collapse.show">Пациенту</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/contacts" data-toggle="collapse" data-target=".navbar-collapse.show">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container" ng-view>
-  </div>
+    </div>
+
+    <div class="footer">
+        <a href="https://wa.me/77017362706" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i></a>
+    </div>
+
+    <footer class="col-md-12 bg-light border-top pt-4" style="margin-top:40px;">
+        <h5 class="text-uppercase text-center">Задать вопросы или записаться на консультацию</h5>
+        <div class="row">
+                <div class="col-md-4 text-center py-2">
+                    <span>по телефонам:</span>
+                    <h5 title="Запись на консультацию" tooltip="Запись на консультацию">
+                        <a href="https://wa.me/77017362706" target="_blank">
+                           <i class="fa fa-whatsapp type-whatsapp"></i></a>
+                        <a class="text-dark" href="tel:+77017362706"><i class="fa fa-phone-square"></i>+7 701 736 27 06</a>
+                    </h5>
+                    <h5 title="Запись на консультацию" tooltip="Запись на консультацию">
+                        <a class="text-dark" href="tel:+77057533601"><i class="fa fa-phone-square"></i>+7 705 753 36 01</a>
+                    </h5>
+                </div>
+                <div class="col-md-4 text-center py-3">
+                    <a href="mailto:nomad20152016@gmail.com?subject=Sent from gynecologykz.com" class="btn btn-outline-dark" role="button" aria-pressed="true">Консультация по e-mail</a>
+                </div>
+                <div class="col-md-4 text-center py-2">
+                    <ul class="list-unstyled">
+                        <li>
+                          <a ng-click="scroll()" class="text-secondary" href="#!/aboutdoctor">О докторе</a>
+                        </li>
+                        <li>
+                          <a ng-click="scroll()" class="text-secondary" href="#!/reviews">Отзывы пациентов</a>
+                        </li>
+                        <li>
+                          <a ng-click="scroll()" class="text-secondary" href="#!/forpatient">Пациенту</a>
+                        </li>
+                        <li>
+                          <a ng-click="scroll()" class="text-secondary" href="#!/clinic">О клинике</a>
+                        </li>
+                      </ul>          
+                </div>
+        </div>
+        <div class="footer">
+            <a href="https://wa.me/77017362706" class="float" target="_blank">
+             <i class="fa fa-whatsapp my-float"></i></a>
+        </div>
+    </footer>
+    <div class="footer-copyright text-center bg-footer py-3">© 2019 Copyright:
+        <a href="https://gynecologykz.com"> gynecologykz.com</a>
+    </div>
 </body>
 </html>
