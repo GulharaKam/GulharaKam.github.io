@@ -14,21 +14,37 @@
     <script src="js/app.js"></script>
     <script type="text/javascript" src="js/angular-toastr.tpls.min.js"></script>
 </head>
- <body>
-    <h2>Экология сегодня</h2>
-    <div id="content" class="block1"> Cегодня термин "экология" стал применяться очень широко, по самым различным поводам (по делу и не по делу). И процесс этот, по-видимому, необратим. Однако чрезмерное расширение понятия "экология" и включение его в жаргон все же недопустимо. Так, например, говорят, что в городе "плохая экология". Выражение бессмысленное, ибо экология - научная дисциплина и она одна для всего человечества. Можно говорить о плохой экологической обстановке, о неблагоприятных экологических условиях, о том, что в городе отсутствуют квалифицированные экологи, но не о плохой экологии. Это так же нелепо, как сказать, что в городе плохая арифметика или алгебра.
-    Я попытаюсь свести известные толкования этого слова в некую схему методологически связанных между собой понятий. И показать, что это может стать отправной позицией для вполне конкретной деятельности.
-    <h3>Новое направление</h3>
-    Начиная со времен неолитической революции, то есть с той поры, когда было изобретено земледелие, а затем и скотоводство, взаимоотношения человека и Природы стали качественно меняться. Сельскохозяйственная деятельность человека постепенно создает искусственные экосистемы, так называемые агроценозы, живущие по собственным законам: для своего поддержания они требуют постоянного целенаправленного труда человека. Без вмешательства человека они существовать не могут. Человек все больше и больше извлекает из земных недр полезных ископаемых. В результате его активности начинает меняться характер кругооборота веществ в природе, меняется характер окружающей среды. По мере того как растет население и растут потребности человека, свойства среды его обитания изменяются все больше и больше.
-   </div>
-   <div class="block2">
-   <form>
-    <label>Поиск по странице</label>
-    <input type="text" id="text-to-find" value=""> 
-    <input type="button" onclick="javascript: FindOnPage('text-to-find'); return false;" value="Найти"/>
-    </form>
-   </div> 
-    <p><a href="second.html">Причина загрязнения</a></p>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <a class="navbar-brand" href="#!/main">
+         <img src="img/kazgor.png" width="300" height="50" alt="">
+       </a>
+      <ul class="navbar-nav ml-auto">
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">{{sessionData.displayname}}
+           <span class="fa fa-user-circle" style="font-size: 40px; line-height: 40px;"></span>
+           </a>
+         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" href="#!profile">Профиль</a>
+           <a class="dropdown-item" ng-click="logout()">Выйти</a>
+         </div>
+         </li>
+    </ul>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Главная<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#!/requestclient">Форма ввода</a>
+        <a class="nav-item nav-link active" href="#!/activityreport">Покупки</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" ng-view>
+  </div>
 
 <script src="/find.js"></script>
 </body>
