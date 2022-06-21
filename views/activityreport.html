@@ -1,0 +1,199 @@
+<style type="text/css">
+  .container {
+   background: #F5F5F5;
+   padding: 30px;
+   margin: 20px auto 15px auto;
+   overflow: hidden;
+   box-shadow: 0 0 100px #ccc;
+   border: 1px solid #d2d2d2;
+}
+</style>
+
+
+<div ng-show="!showFilters" class="row" style="padding: 0px;">
+   <div class="col-md-6">
+   </div>
+  
+<div class="col-md-6">
+   <h4 class="float-right" title="Добавить фильтры" tooltip="Добавить фильтры" ng-click="showFilters=true">
+   <i class="fa fa-filter"></i>
+   </h4>
+</div>
+</div>
+  
+<div ng-show="showFilters">
+  <div class="row" style="padding: 0px;">
+    <div class="col-md-8">
+      <h5>Поиск товара/услуги:</h5>
+    </div>
+    <div class="col-md-3">
+        <input ng-click="createcsv()" class="btn btn-link float-right" type="submit" value="Экспорт в Excel">
+    </div>
+   <div class="col-md-1">
+    <h4 class="float-right" title="Сбросить фильтры" tooltip="Сбросить фильтры" ng-click="resetFilters()">
+        <i class="fa fa-window-close"></i>
+    </h4>
+    </div>
+</div>
+  <div class="row" style="padding: 0px;">
+     <div class="form-group col-md-3">
+     <label>Дата от:</label>
+     <input ng-model="filter_date_from" type="date" class="form-control" placeholder="Введите дату покупки">
+     </div>
+   <div class="form-group col-md-3">
+    <label>Дата до:</label>
+    <input ng-model="filter_date_to" type="date" class="form-control" placeholder="Введите дату покупки">
+    </div>
+    <div class="form-group col-md-3">
+       <label>Описание покупки</label>
+        <input ng-model="filters.filter_text" type="text" class="form-control" placeholder="Введите ключевое слово">
+    </div>
+    <div class="form-group col-md-3">
+        <label class="input-label">Покупатель</label>
+        <input ng-model="userAsText" ng-change="setFilterUser(userAsText)" class="form-control" list="usersFilter" />
+        <datalist id="usersFilter">
+        <option ng-repeat="user in users" value="{{user.name}}">{{user.name}}</option>
+        </datalist>
+     </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="fit">Товар/Услуга</th>
+        <th scope="col" class="fit">Цена, тенге</th>
+        <th scope="col" class="fit">Дата</th>
+        <th class="text-center fit"><i class="fa fa-paperclip"></i></th>
+        <th scope="col" class="text-center fit">Покупатель</th>
+        <th class="text-center fit"><i class="fa fa-edit"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="fit" align="right">Всего</td>
+            <td class="fit">{{total}}</td>
+            <td class="fit"></td>
+            <td class="text-center fit"></td>
+            <td class="text-center fit"></td>
+            <td class="text-center fit"></td>
+          </tr>
+      <tr ng-repeat="req in event">
+        <td class="fit" ng-click="openWriter(req.id)" ng-class="{'text-primary font-weight-bold': req.edited ==1}">{{req.text}}</td>
+        <td class="fit">{{req.price}}</td>
+        <td class="fit">{{req.datetime}}</td>
+        <td class="text-center fit"><i ng-click="openHistory(req)" title="Состояние работ" data-toggle="modal" data-target="#exampleModalLong1"></i></td>
+        <td class="text-center fit">{{req.writer}}</td>
+        <td class="text-center fit"><i ng-show="req.editevent" class="fa fa-edit" ng-click="openEditor(req)" title="Читатели" data-toggle="modal" data-target="#exampleModalLong"></i></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<!-- Modal -->
+<div ng-show="showEditor" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Редактирование покупки</h5>
+        <button ng-click="closeEditor()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12">
+          <label for="exampleFormControlTextarea1">Наименование товара (услуги)</label>
+          <textarea ng-model="selectedevent.text" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        </div>
+        <div class="col-md-8 py-2">
+              <label for="example-number-input">Цена, тенге</label>
+                <input ng-model="selectedevent.price" ng-value="selectedevent.price" class="form-control" type="number" step="0.01" min="0" id="example-number-input">
+            </div>
+            <div class="col-md-8 py-2">
+              <label for="example-date-input">Дата покупки</label>
+                <input ng-model="selectedevent.datetime" value="selectedevent.datetime" class="form-control" type="date" id="example-date-input">
+            </div>
+        <div class="col-md-12">
+             <input type="file" id="fileUpload" style="display: none;" multiple/>
+             <button class="btn btn-success float-left" onclick="$('input[type=file]').click()">
+             <i class="fa fa-paperclip"></i>Вставить квитанцию</button>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="closeEditor()" type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+        <button ng-click="saveChanges()" type="button" class="btn btn-primary" data-dismiss="modal">Сохранить изменения</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div  ng-show="showwriter" style="display:block;" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">История редактирования</h5>
+          <button ng-click="closewriter()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col" class="fit">Товар/Услуга</th>
+                  <th scope="col" class="fit">Цена, тенге</th>
+                  <th scope="col" class="fit">Дата покупки</th>
+                  <th scope="col" class="fit">Время редакции</th> 
+                  </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="req in historypurchase">
+                  <td class="fit">{{req.text}}</td>
+                  <td class="fit">{{req.price}}</td>
+                  <td class="fit">{{req.datetime}}</td>
+                  <td class="fit">{{req.inputtime}}</td>
+                  </tr>
+              </tbody>
+            </table>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="closewriter()" type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+<div ng-show="files.length" style="display:block;" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Форма для отправления паспорта в виде скан</h5>
+        <button ng-click="files=[]" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <div class="form-group col-md-12" scope="col">
+          <table>
+             <tr ng-repeat="file in files">
+                  <td>{{file.name}}</td>
+                  <td>
+                     <i class="fa fa-trash text-danger" ng-click="removeFile(file, $index)"></i>
+                   </td>
+                   <td>
+                      <i ng-if="file.uploaded" class="fa fa-check text-success"></i>
+                      <span ng-if="!file.uploaded && !file.uploadError">{{file.loaded/file.size*100 | number:0}}%</span>
+                      <span ng-if="file.uploadError" class="text-warning">ошибка загрузки файла</span>
+                   </td>
+                    <td>
+                       <button ng-show="file.uploaded" ng-click="SubmitUpload()" type="button" class="btn btn-primary float-right" data-dismiss="modal">Отправить файл</button>
+                   </td>
+             </tr>
+           </table>
+       </div>
+      <div class="modal-footer">
+         <button ng-click="files = []" type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>
+
