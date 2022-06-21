@@ -52,78 +52,11 @@ app.controller('mainController', function($scope, $rootScope) {
 
 app.controller('requestclientController', function ($scope, $rootScope, $http, toastr, $filter, uiUploader) {
     $rootScope.profile();
-    $scope.event = {};
-    $scope.event.attachments = [];
-    
-    
-    $scope.submit = function(){
-        $scope.event.inputdate = $filter('date')($scope.event.dateinput, "yyyy-MM-dd");
-        $http.post("http://localhost:777/event", $scope.event, {withCredentials: true}).then(function(data) {
-            toastr.success('Ваша покупка зарегистрирована!', 'Отправлено!');
-        }, function(data) {
-            toastr.error('Проверьте правильность заполнения формы', 'Ошибка!');
-        });
-    };
-    
-    $scope.files = [];
-    var element = document.getElementById('fileUpload');
-    element.addEventListener('change', function (e) {
-        var files = e.target.files;
-        uiUploader.addFiles(files);
-        $scope.files = uiUploader.getFiles();
-        $scope.$apply();
-        $scope.upload();
-    });
-
-    $scope.removeFile = function (file, index) {
-        uiUploader.removeFile(file);
-        $scope.event.attachments.splice(index, 1);
-    }
-
-    $scope.upload = function () {
-        uiUploader.startUpload({
-            url: "http://localhost:777/files/upload",
-            concurrency: 2,
-            onProgress: function (file) {
-            },
-            onUploadSuccess: function (file) {
-            },
-            onCompleted: function (file, responseText, status) {
-                if (status == 200) {
-                    file.uploaded = true;
-                    $scope.event.attachments.push(JSON.parse(responseText)[0]);
-                    $scope.$apply();
-                }
-                else if (status == 409) {
-                    file.uploadError = true;
-                    $scope.$apply();
-                }
-            },
-            onCompletedAll: function (files, status) {
-            }
-        });
-    }
-
 });
 
 app.controller('activityreportController', function ($scope, $rootScope, $http, toastr, uiUploader, $timeout, $filter, $window) {
     $rootScope.profile();
-    $scope.events={};
-    $scope.user={};
-    var eventdata=[];
-    $scope.event=[];
-    $scope.workstatus=[];
-    var statusdata=[];
-    $scope.statuswork=[];
-    $scope.selectedevent=[];
-    $scope.selectedwriter={};
-    $scope.showFilters = false;
-    $scope.filters = {};
-    var userdata=[];
-    $scope.users=[];
-    $scope.filters = {};
-    $scope.filter_date_from = null;
-    $scope.filter_date_to = null;
+    
 
     $http.get("http://localhost:777/user").then(function(data) {
         $scope.user = data.data;
