@@ -1,2 +1,50 @@
-&nbsp;
-<img src="img/IT-black_kazgor.png" class="rounded mx-auto d-block" alt="Responsive image" width="400" height="400">
+<div class="card bg-light distance">
+    <div class="card-body" style="background:transparent url('img/bg1.jpg') no-repeat center center /cover">
+        <div class="row">
+                
+                <div class="col-md-6">
+                        <span class="d-block p-1 font-weight-bold text-dark">
+                        <p>Сейсембеков Даир Тельманович - кандидат медицинских наук,  врач гинеколог высшей категории, специалист в области лапароскопической гинекологии. Использует в своей работе новейшие методы хирургических вмешательств, в том числе и робот-ассистированные хирургические вмешательства.</p>
+                        <p>Основное практическое направление - выполнение органосохраняющих лапароскопических операций (удаление миомы матки, кист яичника), хирургическое лечение женского бесплодия.</p>
+                        <p>К настоящему времени Сейсембековым Д.Т. выполнены более 5 000 операций на органах малого таза.</p>
+                        </span>
+                     </div>
+                     <div class="col-md-6">
+                            <img src="img/medical.jpg" alt="..." class="img-fluid">
+                         </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12 distance">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Операции и медицинские консультации</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="type in typesworks">
+                <td> <a class="text-dark" href="#!/listanalyzes">{{type.name}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-md-12">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Информация для пациентов</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="info in forpatients">
+                <td> <a class="text-dark" ng-click="scroll()" ng-href="{{info.patch}}">{{info.name}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
