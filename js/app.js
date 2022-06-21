@@ -193,7 +193,7 @@ app.controller('contactsController', function($scope, $http) {
 });
 
 app.controller('aboutdoctorController', function($scope, $http) {
-
+	
 });
 
 app.controller('listanalyzesController', function($scope, $http, toastr, $filter) {
